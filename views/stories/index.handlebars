@@ -1,0 +1,29 @@
+<!-- ALL PUBLIC STORIES -->
+<h3>Stories</h3>
+<div class="row">
+    {{#each stories}}
+    <div class="col s12 m8 l6">
+        <div class="card">
+            <div class="card-image">
+                {{#if user}}
+                    {{{editIcon this.user.id ../user.id id}}}
+                {{/if}}
+            </div>
+            <div class="card-content center-align">
+                <h5>{{this.title}}</h5>
+                <p class="story-text">{{truncate (stripTags this.body) 150}}<!--{{stripTags (truncate this.body 150)}}--></p>
+                <br>
+                <div class="chip">
+                    <img src="{{user.image}}" alt="Contact Person">
+                    <a href="/stories/user/{{this.user.id}}">{{user.frstname}} {{user.lastname}}</a>
+                </div>
+            </div>
+            <div class="card-action center-align">
+                <a class="btn grey" href="/stories/show/{{this.id}}"><i class="fa fa-more"></i>Read More</a>
+            </div>
+        </div>
+    </div>
+    {{else}}
+        <p>No Stories Found</p>
+    {{/each}}
+</div>

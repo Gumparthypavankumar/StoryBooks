@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    {{!-- <link rel="stylesheet" type="text/css" href="/scripts/css/bootstrap.css"/> --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <title>StoryBooks</title>
+</head>
+
+<body>
+    {{> _navbar }}
+    {{#if user}}
+    {{> _addbutton }}
+    {{/if}}
+    <main>
+        <div class="container">
+            {{{body}}}
+        </div>
+    </main>
+    {{> _footer }}
+</body>
+<script src="/jquery/jquery.min.js"></script>
+<!-- Because materialize is not compatible with jquery 3-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+{{!-- <script src="/scripts/js/bootstrap.min.js" charset="utf-8"></script> --}}
+<script src="/popperjs/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
+<script>
+    $(document).ready(() => {
+        $('.button-collapse').sideNav();
+        $('select').material_select();
+    });
+    try{
+    CKEDITOR.replace('body',{
+        plugins:'wysiwygarea,toolbar,basicstyles,link'
+    });
+    }
+    catch{}
+</script>
+
+</html>
